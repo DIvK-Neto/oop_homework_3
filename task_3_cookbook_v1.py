@@ -44,10 +44,11 @@ def list_processing(file_processing):
 def get_shop_list_by_dishes(dishes, person_count):
     
     product_quantity = {}
+    param_def = list_processing(file_processing())
     
     for dish in dishes:
-        if list_processing(file_processing()).get(dish):  # смотрим, есть ли блюдо в кулинарной книге
-            for product in list_processing(file_processing()).get(dish):  # перебираем ингредиенты и собираем новый словарь
+        if param_def.get(dish):  # смотрим, есть ли блюдо в кулинарной книге
+            for product in param_def.get(dish):  # перебираем ингредиенты и собираем новый словарь
                 if not product_quantity.get(product['ingredient_name']):
                     product_quantity[product['ingredient_name']] = {
                         'measure': product['measure'],
